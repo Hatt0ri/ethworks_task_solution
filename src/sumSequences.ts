@@ -1,7 +1,7 @@
 import { IInputTerm, IHashMap, ITerm } from './interfaces';
 import { get } from 'lodash';
 
-export const sumSequences = (firstSequence: IInputTerm[], secondSequence: IInputTerm[]): string => {
+export const sumSequences = (firstSequence: IInputTerm[], secondSequence: IInputTerm[]): string|null => {
     if (isInputInvalid(firstSequence, secondSequence)) {
         return null;
     }
@@ -52,7 +52,8 @@ const fillOutputArray = (orderedTermKeys: string[], hashMap: IHashMap, outputStr
             const xStr = getX(hashMap, key);
             const exponentStr = xStr ? exponent !== 1 ? exponent : '' : '';
             if (coefficient === 1) {
-                outputStringArray.push(xStr + exponentStr);
+                const coeStr = !xStr ? coefficient : '';
+                outputStringArray.push(coeStr + xStr + exponentStr);
             } else if (coefficient === -1) {
                 const coeStr = exponent === 0 ? '' + coefficient : '-';
                 outputStringArray.push(coeStr + xStr + exponentStr);
