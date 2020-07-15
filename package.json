@@ -4,16 +4,22 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "test": "mocha --recursive \"**/*spec.ts\""
+    "test": "mocha --recursive \"**/*spec.ts\" --require ts-node/register"
   },
   "author": "Karol Pajor",
   "license": "ISC",
   "devDependencies": {
+    "@types/chai": "^4.2.11",
+    "@types/lodash": "^4.14.157",
     "@types/mocha": "^8.0.0",
     "@types/node": "^14.0.23",
     "mocha": "^8.0.1",
     "ts-node": "^8.10.2",
     "tslint": "^6.1.2",
     "typescript": "^3.9.6"
+  },
+  "dependencies": {
+    "chai": "^4.2.0",
+    "lodash": "^4.17.19"
   }
 }
