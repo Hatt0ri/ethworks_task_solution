@@ -1,10 +1,5 @@
-export interface ITerm {
-    coefficient: number;
-    exponent: number;
-}
-
 export interface IHashMap {
-    [key: string]: ITerm;
+    [key: string]: number;
 }
 // the first is a coefficient num and the second is an exponent num
-export type IInputTerm = [number, number];
+export type ITerm = [number, number];
