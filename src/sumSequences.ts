@@ -49,13 +49,15 @@ const fillOutputArray = (orderedTermKeys: string[], hashMap: IHashMap, outputStr
         const coefficient = hashMap[key].coefficient;
         const exponent = hashMap[key].exponent;
         if (coefficient !== 0) {
-            const xLetter = getX(hashMap, key);
-            const exponentStr = xLetter ? exponent !== 1 ? exponent : '' : '';
+            const xStr = getX(hashMap, key);
+            const exponentStr = xStr ? exponent !== 1 ? exponent : '' : '';
             if (coefficient === 1) {
-                outputStringArray.push(xLetter + exponentStr);
-            }
-            else {
-                outputStringArray.push(coefficient + xLetter + exponentStr);
+                outputStringArray.push(xStr + exponentStr);
+            } else if (coefficient === -1) {
+                const coeStr = exponent === 0 ? '' + coefficient : '-';
+                outputStringArray.push(coeStr + xStr + exponentStr);
+            } else {
+                outputStringArray.push(coefficient + xStr + exponentStr);
             }
         }
     });
