@@ -1,0 +1,19 @@
+{
+  "name": "ethworks_solution",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "test": "mocha --recursive \"**/*spec.ts\""
+  },
+  "author": "Karol Pajor",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/mocha": "^8.0.0",
+    "@types/node": "^14.0.23",
+    "mocha": "^8.0.1",
+    "ts-node": "^8.10.2",
+    "tslint": "^6.1.2",
+    "typescript": "^3.9.6"
+  }
+}
