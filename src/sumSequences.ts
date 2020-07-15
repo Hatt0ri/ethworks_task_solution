@@ -41,7 +41,7 @@ const getX = (hashMap: IHashMap, key: string) => {
     return 'x^';
 }
 
-function fillOutputArray(orderedTermKeys: string[], hashMap: IHashMap, outputStringArray: string[]) {
+const fillOutputArray = (orderedTermKeys: string[], hashMap: IHashMap, outputStringArray: string[]) => {
     orderedTermKeys.forEach((key) => {
         const coefficient = hashMap[key].coefficient;
         if (coefficient !== 0) {
