@@ -13,11 +13,12 @@ export const sumSequences = (firstSequence: IInputTerm[], secondSequence: IInput
     const outputStringArray: string[] = [];
     fillOutputArray(orderedTermKeys, hashMap, outputStringArray);
 
-    return outputStringArray.join(' + ').replace('+ -', '- ');
+    const result = outputStringArray.join(' + ').replace('+ -', '- ');
+    return result === '' ? '0' : result;
 };
 
 const isInputInvalid = (firstSequence: IInputTerm[], secondSequence: IInputTerm[]) => {
-    return get(firstSequence, 'length', 0) === 0 || get(secondSequence, 'length', 0) === 0;
+    return get(firstSequence, 'length', 0) === 0 && get(secondSequence, 'length', 0) === 0;
 };
 
 const parseInput = (firstSequence: IInputTerm[], secondSequence: IInputTerm[], hashMap: IHashMap) => {
