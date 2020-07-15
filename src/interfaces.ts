@@ -4,7 +4,7 @@ export interface ITerm {
 }
 
 export interface IHashMap {
-    [key: number]: ITerm;
+    [key: string]: ITerm;
 }
 // the first is a coefficient num and the second is an exponent num
 export type IInputTerm = [number, number];
