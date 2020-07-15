@@ -13,7 +13,7 @@ export const sumSequences = (firstSequence: IInputTerm[], secondSequence: IInput
     const outputStringArray: string[] = [];
     fillOutputArray(orderedTermKeys, hashMap, outputStringArray);
 
-    return outputStringArray.join(' + ');
+    return outputStringArray.join(' + ').replace('+ -', '- ');
 };
 
 const isInputInvalid = (firstSequence: IInputTerm[], secondSequence: IInputTerm[]) => {

@@ -11,5 +11,9 @@ describe('Tests of sumSequences()', () => {
       const sum = sumSequences([[2, 2], [3, 0]], [[3, 3], [1, 2]]);
       expect(sum).to.equal('3x^3 + 3x^2 + 3');
     });
+    it('should return "3x^3 + 3x^2 - 3"', () => {
+      const sum = sumSequences([[2, 2], [-3, 0]], [[3, 3], [1, 2]]);
+      expect(sum).to.equal('3x^3 + 3x^2 - 3');
+    });
   });
 });
