@@ -38,6 +38,8 @@ const parseInput = (firstSequence: IInputTerm[], secondSequence: IInputTerm[], h
 const getX = (hashMap: IHashMap, key: string) => {
     if (hashMap[key].exponent === 0) {
         return '';
+    } else if (hashMap[key].exponent === 1) {
+        return 'x';
     }
     return 'x^';
 }
@@ -45,14 +47,15 @@ const getX = (hashMap: IHashMap, key: string) => {
 const fillOutputArray = (orderedTermKeys: string[], hashMap: IHashMap, outputStringArray: string[]) => {
     orderedTermKeys.forEach((key) => {
         const coefficient = hashMap[key].coefficient;
+        const exponent = hashMap[key].exponent;
         if (coefficient !== 0) {
             const xLetter = getX(hashMap, key);
+            const exponentStr = xLetter ? exponent !== 1 ? exponent : '' : '';
             if (coefficient === 1) {
-                outputStringArray.push(xLetter + hashMap[key].exponent);
+                outputStringArray.push(xLetter + exponentStr);
             }
             else {
-                const exponent = xLetter ? hashMap[key].exponent : '';
-                outputStringArray.push(coefficient + xLetter + exponent);
+                outputStringArray.push(coefficient + xLetter + exponentStr);
             }
         }
     });
