@@ -8,12 +8,12 @@ export const sumSequences = (firstSequence: IInputTerm[], secondSequence: IInput
 
     const hashMap: IHashMap = {};
     parseInput(firstSequence, secondSequence, hashMap);
-    const orderedTermKeys: string[] = Object.keys(hashMap).sort().reverse();
+    const orderedTermKeys: string[] = Object.keys(hashMap).sort((a, b) => parseFloat(b) - parseFloat(a));
 
     const outputStringArray: string[] = [];
     fillOutputArray(orderedTermKeys, hashMap, outputStringArray);
 
-    const result = outputStringArray.join(' + ').replace('+ -', '- ');
+    const result = outputStringArray.join(' + ').replace(/\+ -/g, '- ');
     return result === '' ? '0' : result;
 };
 
