@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "test": "mocha --recursive \"**/*spec.ts\" --require ts-node/register"
+    "test": "mocha --recursive \"**/*spec.ts\" --require ts-node/register",
+    "start": "ts-node index.ts"
   },
   "author": "Karol Pajor",
   "license": "ISC",
