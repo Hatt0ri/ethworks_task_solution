@@ -1,7 +1,7 @@
 import { ITerm, IHashMap } from './interfaces';
 import { get } from 'lodash';
 
-const sumSequences = (firstSequence: ITerm[], secondSequence: ITerm[]): ITerm[]|null => {
+const sumSequences = (firstSequence: ITerm[], secondSequence: ITerm[], sortDesc: boolean = false): ITerm[] | null => {
     if (isInputInvalid(firstSequence, secondSequence)) {
         return null;
     }
@@ -9,12 +9,13 @@ const sumSequences = (firstSequence: ITerm[], secondSequence: ITerm[]): ITerm[]|
     const hashMap: IHashMap = {};
     sumTerms(firstSequence, secondSequence, hashMap);
 
-    const orderedTermKeys: string[] = Object.keys(hashMap)
-        .sort((a, b) => parseFloat(b) - parseFloat(a));
+    const orderedTermKeys: string[] = Object.keys(hashMap);
+
+    if (sortDesc) { orderedTermKeys.sort((a, b) => parseFloat(b) - parseFloat(a)); }
     const result: ITerm[] = [];
-    orderedTermKeys.forEach((key) => {
+    for (const key of orderedTermKeys) {
         result.push([hashMap[key], parseFloat(key)]);
-    });
+    }
     return result;
 };
 
@@ -23,17 +24,16 @@ const isInputInvalid = (firstSequence: ITerm[], secondSequence: ITerm[]) => {
 };
 
 const sumTerms = (firstSequence: ITerm[], secondSequence: ITerm[], hashMap: IHashMap) => {
-    firstSequence.forEach((term) => {
+    for (const term of firstSequence) {
         hashMap[term[1]] = term[0];
-    });
-    secondSequence.forEach((term) => {
+    }
+    for (const term of secondSequence) {
         if (typeof hashMap[term[1]] === 'undefined') {
             hashMap[term[1]] = term[0];
         } else {
-            const coefficient = hashMap[term[1]];
-            hashMap[term[1]] = coefficient + term[0];
+            hashMap[term[1]] = hashMap[term[1]] + term[0];
         }
-    });
+    }
 }
 
 export default sumSequences;
