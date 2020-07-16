@@ -9,7 +9,7 @@ const sumSequences = (firstSequence: ITerm[], secondSequence: ITerm[], sortDesc:
     const hashMap: IHashMap = {};
     sumTerms(firstSequence, secondSequence, hashMap);
 
-    const orderedTermKeys: string[] = Object.keys(hashMap);
+    const orderedTermKeys: string[] = Object.keys(hashMap).filter((key) => hashMap[key] !== 0);
 
     if (sortDesc) { orderedTermKeys.sort((a, b) => parseFloat(b) - parseFloat(a)); }
     const result: ITerm[] = [];
